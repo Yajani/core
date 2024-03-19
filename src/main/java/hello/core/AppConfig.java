@@ -12,14 +12,15 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration //spring사용시 !!
 public class AppConfig { //실제 동작에 필요한 구현 객체를 생성(어떤 구현 객체를 주입할지 결정)
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
 
-    private MemberRepository memberRepository() {
+    @Bean
+    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 

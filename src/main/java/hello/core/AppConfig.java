@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppConfig {
+public class AppConfig { //실제 동작에 필요한 구현 객체를 생성(어떤 구현 객체를 주입할지 결정)
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(new MemoryMemberRepository());
@@ -21,7 +21,7 @@ public class AppConfig {
 
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(),new FixDiscountPolicy());
+        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
     }
 
     @Bean

@@ -20,7 +20,6 @@ public class OrderServiceImpl implements OrderService{
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
-
         return new Order(memberId,itemName,itemPrice,discountPrice);
     }
 }

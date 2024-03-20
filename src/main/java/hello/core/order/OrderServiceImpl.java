@@ -6,7 +6,6 @@ import hello.core.member.MemberRepository;
 
 public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
-
     private final DiscountPolicy discountPolicy; //인터페이스에만 의존하도록 변경
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
@@ -21,6 +20,10 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
         return new Order(memberId,itemName,itemPrice,discountPrice);
+    }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
 

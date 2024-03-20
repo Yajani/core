@@ -17,7 +17,7 @@ public class AppConfig { //실제 동작에 필요한 구현 객체를 생성(�
     //@Bean memberService -> new MemoryMemberRepository()
     //@Bean orderService -> new MemoryMemberRepository()
 
-    @Bean
+    @Bean //@Bean만 사용해도 스프링 빈으로 등록되지만(@Configuration없이), 싱글톤을 보장하지 않는다.
     public MemberService memberService() {
         System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());

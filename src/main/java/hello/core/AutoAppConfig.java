@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -22,5 +25,9 @@ basePackages = {"hello.core", "hello.service"} -> 여러 시작위치 지정가�
         basePackageClasses = AutoAppConfig.class, //지정한 클래스의 패키지를 탐색 시작 위치로 지정
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION,classes = Configuration.class)
 )
-public class AutoAppConfig {
+public class AutoAppConfig { //수동등록 Bean이 우선권을 갖는다 (수동 빈이 자동 빈을 오버라이딩 해버린다.)
+    @Bean(name = "memoryMemberRepository")
+    MemberRepository memberRepository(){
+        return new MemoryMemberRepository();
+    }
 }

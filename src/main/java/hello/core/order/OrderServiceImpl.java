@@ -5,10 +5,11 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor //생성자 자동생성(final을 붙인거에 생성자 생성해줌!!!)
+//@RequiredArgsConstructor //생성자 자동생성(final을 붙인거에 생성자 생성해줌!!!)
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -25,10 +26,16 @@ public class OrderServiceImpl implements OrderService{
 //    }
 
 //    @Autowired //생성자가 하나면 Autowired생략가능
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
 //        this.memberRepository = memberRepository;
 //        this.discountPolicy = discountPolicy;
 //    } //생성자를 통해서 할당
+
+    @Autowired //생성자가 하나면 Autowired생략가능
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    } //생성자를 통해서 할당
 
 //    @Autowired
 //    public void init(MemberRepository memberRepository,DiscountPolicy discountPolicy){ //일반 메서드 주입

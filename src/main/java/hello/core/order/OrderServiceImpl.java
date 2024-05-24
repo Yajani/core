@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-//@RequiredArgsConstructor //생성자 자동생성(final을 붙인거에 생성자 생성해줌!!!)
+@RequiredArgsConstructor //생성자 자동생성(final을 붙인거에 생성자 생성해줌!!!)
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;

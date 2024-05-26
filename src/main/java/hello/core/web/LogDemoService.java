@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class LogDemoService {
 
-    private final MyLogger myLogger;
+    private final ObjectProvider<MyLogger> myLoggerObjectProvider;
 
     public void logic(String testId) {
+        MyLogger myLogger = myLoggerObjectProvider.getObject();
         myLogger.log("service id = " + testId);
 
     }
